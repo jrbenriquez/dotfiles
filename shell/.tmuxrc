@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+alias tks='tmux kill-session -t'
+alias tls='tmux ls'
+alias tnw='tmux new -s'
+alias tas='tmux a -t'
+alias ta='tmux a'

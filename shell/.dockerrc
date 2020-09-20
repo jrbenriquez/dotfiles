@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# External Config so Docker Files are stores in External Drive
+export DOCKEREXTERNALDRIVE=/Volumes/JohnRei
+export DOCKEREXTERNALHOME=$DOCKEREXTERNALDRIVE$HOME

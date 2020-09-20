@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Got this from Ivan Baguio
+
+alias pyshell="python manage.py shell"
+alias pytestff="TESTING=1 python manage.py test --failfast --noinput"
+alias pym="python manage.py migrate"
+alias pyrs="python manage.py runserver"
+alias pysm="python manage.py showmigrations"
+alias pymm="python manage.py makemigrations"
+alias pymmm="python manage.py makemigrations --merge --no-input;"
+alias pymx="python manage.py makemigrations --merge --verbosity 0; python manage.py makemigrations --verbosity 0; python manage.py migrate"
