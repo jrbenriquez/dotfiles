@@ -136,6 +136,7 @@ alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
 source $DOTFILES_DIR/shell/.djangorc
 
 # docker configs
+source $DOTFILES_DIR/shell/.dockerrc
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
