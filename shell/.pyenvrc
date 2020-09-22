@@ -7,4 +7,4 @@ alias use-venv='pyenv activate'
 alias deac-venv='pyenv deactivate'
 alias u-venv='pyenv activate'
 alias x-venv='pyenv deactivate'
-# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PYENV_VIRTUALENV_DISABLE_PROMPT=0
