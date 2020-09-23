@@ -498,6 +498,7 @@ endif
 " Personal option configs own/copied
 set bs=2
 set clipboard=unnamed
+set colorcolumn=79,119
 " Quickly insert an empty new line without entering insert mode
 nnoremap o o<Esc>
 nnoremap O O<Esc>
@@ -505,8 +506,8 @@ nnoremap O O<Esc>
 let g:netrw_banner = 0
 
 " Tab navigation
-nnoremap th :tabnext<CR>
-nnoremap tl :tabprev<CR>
+nnoremap tl :tabnext<CR>
+nnoremap th :tabprev<CR>
 nnoremap tn :tabnew<CR>
 
 " Show file options above the command line
