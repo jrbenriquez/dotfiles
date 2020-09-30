@@ -13,8 +13,6 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 " All of your Plugins must be added before the following line
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
 Plugin 'mileszs/ack.vim'
 
 call vundle#end()            " required
@@ -158,16 +156,11 @@ Plug 'mhinz/vim-signify'
 " Yank history navigation
 Plug 'vim-scripts/YankRing.vim'
 " Linters
-Plug 'neomake/neomake'
-" Relative numbering of lines (0 is the current line)
-" (disabled by default because is very intrusive and can't be easily toggled
-" on/off. When the plugin is present, will always activate the relative
-" numbering every time you go to normal mode. Author refuses to add a setting
-" to avoid that)
 Plug 'myusuf3/numbers.vim'
 " Nice icons in the file explorer and file type status line.
 Plug 'ryanoasis/vim-devicons'
-
+" ALE
+Plug 'dense-analysis/ale'
 if using_vim
     " Consoles as buffers (neovim has its own consoles as buffers)
     Plug 'rosenfeld/conque-term'
@@ -344,19 +337,6 @@ autocmd BufEnter * call NERDTreeRefresh()
 " show pending tasks list
 map <F2> :TaskList<CR>
 
-" Neomake ------------------------------
-
-" Run linter on write
-autocmd! BufWritePost * Neomake
-
-" Check code as python3 by default
-"let g:neomake_python_python_maker = neomake#makers#ft#python#python()
-"let g:neomake_python_flake8_maker = neomake#makers#ft#python#flake8()
-"let g:neomake_python_python_maker.exe = 'python3 -m py_compile'
-"let g:neomake_python_flake8_maker.exe = 'python3 -m flake8'
-
-" Disable error messages inside the buffer, next to the problematic line
-let g:neomake_virtualtext_current_error = 0
 
 " Fzf ------------------------------
 
@@ -499,9 +479,18 @@ endif
 set bs=2
 set clipboard=unnamed
 set colorcolumn=79,119
+
+let mapleader = " "
+
 " Quickly insert an empty new line without entering insert mode
 nnoremap o o<Esc>
 nnoremap O O<Esc>
+
+" Quick Fzf
+nnoremap <leader>f :Files<CR> 
+
+" Quick Ack
+nnoremap <leader>s :Ack 
 
 let g:netrw_banner = 0
 
@@ -524,4 +513,16 @@ set wildignore+=node_modules/*,bower_components/*
 " `gf` opens file under cursor in a new vertical split
 nnoremap gf :vertical wincmd f<CR>
 
-nmap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>l :NERDTreeToggle<CR>
+" Breaks the current line where the cursor is"
+nnoremap nl i<CR><ESC>
+
+" Put these lines at the very end of your vimrc file.
+
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL;x
+
