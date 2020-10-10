@@ -271,3 +271,11 @@ function! XTermPasteBegin()
 endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+" Remove Trailing Whitespaces
+autocmd BufWritePre *.py :%s/\s\+$//e
+" Set file status indicator [+] if changed etc..
+set laststatus=2
+set statusline=[%n]\ %<%f%h%m
+
+" Disable creation of swap files coz they are annoying
+set noswapfile
