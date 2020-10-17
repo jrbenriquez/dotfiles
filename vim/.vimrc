@@ -245,18 +245,18 @@ set wildmode=list:longest
 nnoremap <leader>f :Files<CR> 
 
 " Quick Ack
-nnoremap <leader>s :Ack 
+nnoremap <leader>a :Ack 
 
 " Disable autocompletion (using deoplete instead)
 let g:jedi#completions_enabled = 0
 
 " All these mappings work only for python code:
 " Go to definition
-let g:jedi#goto_command = ',d'
+let g:jedi#goto_command = '<leader>gd'
 " Find ocurrences
-let g:jedi#usages_command = ',o'
+let g:jedi#usages_command = '<leader>gu'
 " Find assignments
-let g:jedi#goto_assignments_command = ',a'
+let g:jedi#goto_assignments_command = '<leader>ga'
 " Go to definition in new tab
 nmap ,D :tab split<CR>:call jedi#goto()<CR>
 " disable autoindent when pasting text
