@@ -1,8 +1,9 @@
 #! /usr/bin/env bash
 
-tmux new-session -n 'editor' -d
+tmux new-session -n 'vim' -d
 tmux send-keys -t "0" 'vim' Enter
 tmux new-window -n 'devops' 
 tmux split-window -h
 tmux split-window -v
+tmux select-pane -t 0
 tmux -2 attach-session -d

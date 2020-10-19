@@ -34,6 +34,7 @@ Plug 'davidhalter/jedi-vim'
 " FZF Fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 
@@ -91,6 +92,7 @@ nmap <S-Right> w
 
 " Breaks the current line where the cursor is"
 nnoremap nl i<CR><ESC>
+nnoremap nL i<CR><ESC>O
 
 " indent/unindent with tab/shift-tab
 nmap <Tab> >>
@@ -200,6 +202,7 @@ function! StartUp()
 endfunction
 autocmd VimEnter * call StartUp()
 
+
 " tag list
 map <leader>t :TagbarToggle<CR>
 
@@ -277,5 +280,15 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 set laststatus=2
 set statusline=[%n]\ %<%f%h%m
 
+"Black keymappings
+let g:black_linelength = 120
+let g:black_skip_string_normalization = 1
+nnoremap <leader>b :Black<CR>
 " Disable creation of swap files coz they are annoying
 set noswapfile
+set exrc
+set secure
+
+filetype plugin on
+" Set proper tab spacing in javascript
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
