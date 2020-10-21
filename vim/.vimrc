@@ -195,12 +195,13 @@ function NERDTreeToggle()
     endif
 endfunction
 
-function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
-autocmd VimEnter * call StartUp()
+" Open NERDTree if no args provided
+"function! StartUp()
+"    if 0 == argc()
+"        NERDTree
+"    end
+"endfunction
+"autocmd VimEnter * call StartUp()
 
 
 " tag list
@@ -276,6 +277,8 @@ endfunction
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 " Remove Trailing Whitespaces
 autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.html :%s/\s\+$//e
+autocmd BufWritePre *.js :%s/\s\+$//e
 " Set file status indicator [+] if changed etc..
 set laststatus=2
 set statusline=[%n]\ %<%f%h%m
