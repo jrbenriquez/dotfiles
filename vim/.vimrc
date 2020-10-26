@@ -112,7 +112,7 @@ function ToggleMouse()
         let g:is_mouse_enabled = 0
     else
         echo "Mouse ON"
-        set mouse=a
+        set mouse=v
         let g:is_mouse_enabled = 1
     endif
 endfunction
