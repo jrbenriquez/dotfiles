@@ -2,3 +2,4 @@ jedi
 neovim
 flake8
 pylint
+pylint-django

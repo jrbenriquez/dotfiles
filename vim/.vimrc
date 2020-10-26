@@ -126,7 +126,7 @@ filetype plugin indent on
 " lightline
 set noshowmode
 let g:lightline = { 'colorscheme': 'onedark' }
-
+hi Normal guibg=NONE ctermbg=NONE
 " code folding
 set foldmethod=indent
 set foldlevel=99
