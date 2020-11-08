@@ -132,6 +132,9 @@ source $DOTFILES_DIR/shell/.gitrc
 # Tmux Bindings
  source $DOTFILES_DIR/shell/.tmuxrc
 
+# Audio Recording Scripts
+alias rec-ready='$DOTFILES_DIR/audio/ready-audio.sh'
+
 # vim install python dependencies
 alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
 alias pip3='pip'

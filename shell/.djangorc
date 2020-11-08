@@ -2,6 +2,7 @@
 # Got this from Ivan Baguio
 
 alias pyshell="python manage.py shell"
+alias pyplus-sh="python manage.py shell_plus"
 alias pytestff="TESTING=1 python manage.py test --failfast --noinput"
 alias pym="python manage.py migrate"
 alias pyrs="python manage.py runserver"

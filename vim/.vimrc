@@ -10,6 +10,8 @@ call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'sjl/badwolf'
 Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
@@ -35,6 +37,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'psf/black', { 'branch': 'stable' }
+
 call plug#end()
 
 
@@ -102,7 +105,7 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 
 " mouse
-set mouse=a
+set mouse=v
 let g:is_mouse_enabled = 1
 noremap <silent> <Leader>m :call ToggleMouse()<CR>
 function ToggleMouse()
@@ -126,10 +129,10 @@ filetype plugin indent on
 " lightline
 set noshowmode
 let g:lightline = { 'colorscheme': 'onedark' }
-hi Normal guibg=NONE ctermbg=NONE
 " code folding
 set foldmethod=indent
 set foldlevel=99
+hi Normal guibg=NONE ctermbg=NONE
 
 " wrap toggle
 setlocal nowrap
@@ -245,6 +248,8 @@ set completeopt-=preview
 " (complete only the common part, list the options that match)
 set wildmode=list:longest
 
+let g:fzf_layout = { 'window' : { 'width': 0.8, 'height': 0.8} }
+let $FZF_DEFAULT_OPTS='--reverse'
 " Quick Fzf
 nnoremap <leader>f :Files<CR> 
 
@@ -295,3 +300,5 @@ set secure
 filetype plugin on
 " Set proper tab spacing in javascript
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+" For Gruvbox
+highlight LineNr ctermfg=grey
