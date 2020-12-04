@@ -19,4 +19,5 @@ alias grmixed='git reset --mixed'
 alias gst='git status'
 alias gstash='git stash'
 alias gstp='git stash pop'
+alias ga='git add'
 export gmrgo(){git merge origin/$1}

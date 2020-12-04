@@ -127,13 +127,13 @@ source $DOTFILES_DIR/shell/._zshrc
 source $DOTFILES_DIR/shell/.gitrc
 
 # pyenv bindings
- source $DOTFILES_DIR/shell/.pyenvrc
+source $DOTFILES_DIR/shell/.pyenvrc
 
 # Tmux Bindings
- source $DOTFILES_DIR/shell/.tmuxrc
+source $DOTFILES_DIR/shell/.tmuxrc
 
-# Audio Recording Scripts
-alias rec-ready='$DOTFILES_DIR/audio/ready-audio.sh'
+# CTag Bindings 
+source $DOTFILES_DIR/shell/.ctagsrc
 
 # vim install python dependencies
 alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'

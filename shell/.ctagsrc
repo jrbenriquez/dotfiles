@@ -1,0 +1,2 @@
+alias rtg="ctags -R -f tags"
+

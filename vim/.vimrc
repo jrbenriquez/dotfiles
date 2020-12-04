@@ -37,6 +37,9 @@ Plug 'davidhalter/jedi-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'psf/black', { 'branch': 'stable' }
+" Git Blame
+Plug 'zivyangll/git-blame.vim'
+Plug 'ivanov/vim-ipython'
 
 call plug#end()
 
@@ -302,3 +305,10 @@ filetype plugin on
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " For Gruvbox
 highlight LineNr ctermfg=grey
+" Git blame shortcut"
+nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
+" Consistent python spacing
+autocmd FileType python set sw=4
+autocmd FileType python set ts=4
+autocmd FileType python set sts=4
+
