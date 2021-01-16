@@ -108,7 +108,7 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 
 " mouse
-set mouse=v
+set mouse=a
 let g:is_mouse_enabled = 1
 noremap <silent> <Leader>m :call ToggleMouse()<CR>
 function ToggleMouse()
