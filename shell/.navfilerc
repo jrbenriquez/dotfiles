@@ -3,6 +3,7 @@
 export PROJECT_HOME=$HOME/Code
 alias g2code='cd $PROJECT_HOME'
 alias g2="cd $PROJECT_HOME && cd"
+alias g2notes="cd ~/Documents/notes/"
 alias g2venvs='cd ~/.virtualenvs'
 alias grepr='grep -R'
 alias ackr='ack -R'

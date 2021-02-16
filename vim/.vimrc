@@ -139,6 +139,7 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " wrap toggle
 setlocal nowrap
+set nowrap
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function ToggleWrap()
     if &wrap
