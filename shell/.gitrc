@@ -20,4 +20,8 @@ alias gst='git status'
 alias gstash='git stash'
 alias gstp='git stash pop'
 alias ga='git add'
+alias gft='git fetch'
+alias grbs='git rebase'
+alias grbsomas='git fetch && git rebase origin/master'
+alias grbsomain='git rebase origin/main'
 export gmrgo(){git merge origin/$1}

@@ -40,7 +40,8 @@ Plug 'psf/black', { 'branch': 'stable' }
 " Git Blame
 Plug 'zivyangll/git-blame.vim'
 Plug 'ivanov/vim-ipython'
-
+" Global Search
+Plug 'dyng/ctrlsf.vim'
 call plug#end()
 
 
@@ -201,7 +202,8 @@ function NERDTreeToggle()
         wincmd p
     endif
 endfunction
-
+" Find file in tree 
+nmap ,n :NERDTreeFind<CR>
 " Open NERDTree if no args provided
 "function! StartUp()
 "    if 0 == argc()
@@ -301,7 +303,6 @@ set noswapfile
 set exrc
 set secure
 
-filetype plugin on
 " Set proper tab spacing in javascript
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " For Gruvbox
@@ -312,4 +313,11 @@ nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
 autocmd FileType python set sw=4
 autocmd FileType python set ts=4
 autocmd FileType python set sts=4
+
+
+" ALE "
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\}
 
