@@ -135,6 +135,8 @@ source $DOTFILES_DIR/shell/.pipenvrc
 # Git related bindings
 source $DOTFILES_DIR/shell/.gitrc
 
+# ctags related bindings
+source $DOTFILES_DIR/shell/.ctagsrc
 
 # Custom/Local Machine Bindings
 alias g2broker="cd ~/Code/newbroker/broker-engine"
@@ -170,3 +172,6 @@ PATH=/usr/local/mysql/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
