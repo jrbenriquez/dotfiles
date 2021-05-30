@@ -2,12 +2,12 @@
 if tmux list-session | grep $1
 then
   echo "Attaching to existing tmux session $1"
-  tmux a -t $1
+  tmux -u attach-session -t $1
 else
   echo "Creating new tmux session $1"
   tmux new-session -s $1 -n $1 -d
   tmux new-window -n 'vim' 
   tmux send-keys -t "1" 'vim' Enter
   tmux select-window -t "$1"
-  tmux -u attach-session -d
+  tmux -u attach-session -t $1
 fi
