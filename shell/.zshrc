@@ -114,6 +114,7 @@ eval "$(pyenv init -)"
 export DOTFILES_DIR=~/Code/dotfiles
 alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/vim
+alias tmux=tmux -u
 
 #export LC_ALL=en_US.UTF-8
 export LC_ALL=C
@@ -139,7 +140,6 @@ source $DOTFILES_DIR/shell/.gitrc
 source $DOTFILES_DIR/shell/.ctagsrc
 
 # Custom/Local Machine Bindings
-alias g2broker="cd ~/Code/newbroker/broker-engine"
 #
 # pyenv bindings
 source $DOTFILES_DIR/shell/.pyenvrc
@@ -162,7 +162,7 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # Virtualenvwrapper.sh
 
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+#export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 #export WORKON_HOME=$HOME/.virtualenvs
 # source /Users/user/.pyenv/shims/virtualenvwrapper.sh
@@ -174,4 +174,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+#fzf
+export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -6,4 +6,4 @@ alias tnw='tmux new -s'
 alias tas='tmux a -t'
 alias ta='tmux a'
 
-alias dev-tmux='$DOTFILES_DIR/tmux/default-session'
+export  devon(){$DOTFILES_DIR/tmux/default-session $1}

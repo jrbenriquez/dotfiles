@@ -1,9 +1,13 @@
 #! /usr/bin/env bash
-
-tmux new-session -n 'vim' -d
-tmux send-keys -t "0" 'vim' Enter
-tmux new-window -n 'devops' 
-tmux split-window -h
-tmux split-window -v
-tmux select-pane -t 0
-tmux -2 attach-session -d
+if tmux list-session | grep $1
+then
+  echo "Attaching to existing tmux session $1"
+  tmux a -t $1
+else
+  echo "Creating new tmux session $1"
+  tmux new-session -s $1 -n $1 -d
+  tmux new-window -n 'vim' 
+  tmux send-keys -t "1" 'vim' Enter
+  tmux select-window -t "$1"
+  tmux -u attach-session -d
+fi
