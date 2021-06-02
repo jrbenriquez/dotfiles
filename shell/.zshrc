@@ -10,7 +10,8 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jr/.oh-my-zsh"
-
+# Use Vim like interface in bash
+ set -o vi
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
