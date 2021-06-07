@@ -151,7 +151,7 @@ alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
 # django key bindings script
 source $DOTFILES_DIR/shell/.djangorc
 
-# django key bindings script
+# vimwiki bindings script
 source $DOTFILES_DIR/shell/.vimwikirc
 
 # docker configs
