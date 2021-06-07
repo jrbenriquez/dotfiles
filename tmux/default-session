@@ -6,8 +6,17 @@ then
 else
   echo "Creating new tmux session $1"
   tmux new-session -s $1 -n $1 -d
+  tmux new-window -n 'backend' 
+  tmux new-window -n 'frontend' 
+  tmux new-window -n 'shell' 
+  tmux new-window -n 'devops' 
+  tmux new-window -n 'db' 
+  tmux new-window -n '6' 
+  tmux new-window -n '7' 
+  tmux new-window -n '8' 
   tmux new-window -n 'vim' 
-  tmux send-keys -t "1" 'vim' Enter
+  tmux select-window -t "9"
+  tmux send-keys -t "9" 'vim' Enter
   tmux select-window -t "$1"
   tmux -u attach-session -t $1
 fi

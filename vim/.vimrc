@@ -42,9 +42,10 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'ivanov/vim-ipython'
 " Global Search
 Plug 'dyng/ctrlsf.vim'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
-
+set nocompatible
 filetype plugin indent on
 syntax on
 
