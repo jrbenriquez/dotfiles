@@ -1,1 +1,2 @@
-alias smn="cd ~/vimwiki && ./sync.sh &"
+# smn -> Sync My Notes
+alias smn="SMN_LAST_DIR=$(pwd) && cd ~/vimwiki && ./sync.sh & cd $SMN_LAST_DIR"
