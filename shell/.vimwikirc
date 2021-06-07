@@ -1,1 +1,1 @@
-alias smn=". ~/vimwiki/sync.sh &"
+alias smn="cd ~/vimwiki && ./sync.sh &"
