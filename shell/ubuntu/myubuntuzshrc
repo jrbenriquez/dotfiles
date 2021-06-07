@@ -142,6 +142,8 @@ alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
 alias pip3='pip'
 # django key bindings script
 source $DOTFILES_DIR/shell/.djangorc
+# vimwiki bindings script
+source $DOTFILES_DIR/shell/.vimwikirc
 
 
 export PYENV_ROOT="$HOME/.pyenv"
