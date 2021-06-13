@@ -43,6 +43,8 @@ Plug 'ivanov/vim-ipython'
 " Global Search
 Plug 'dyng/ctrlsf.vim'
 Plug 'vimwiki/vimwiki'
+" Autotag
+Plug 'craigemery/vim-autotag'
 call plug#end()
 
 set nocompatible
@@ -321,4 +323,5 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
 \}
-
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+nnoremap <leader>z :CtrlPTag<cr>

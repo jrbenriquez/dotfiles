@@ -1,2 +1,2 @@
-alias rtg="ctags -R --exclude=node_modules --exclude=.git -f tags"
+alias rtg="ctags -R --exclude=node_modules --exclude=.git --exclude=static -f tags"
 
