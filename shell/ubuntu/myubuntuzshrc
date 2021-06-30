@@ -139,7 +139,10 @@ source $DOTFILES_DIR/shell/.ctagsrc
 alias za='zathura'
 # vim install python dependencies
 alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
+
+# Custom aliases
 alias pip3='pip'
+alias fd='fdfind'
 # django key bindings script
 source $DOTFILES_DIR/shell/.djangorc
 # vimwiki bindings script
@@ -158,8 +161,6 @@ source $DOTFILES_DIR/fzf/.fzf-key-bindings
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# export FZF_DEFAULT_COMMAND="fd . $HOME"
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# export FZF_ALT_C_COMMAND="fd -t d . $HOME"
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+export FZF_DEFAULT_COMMAND="fdfind . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"

@@ -325,3 +325,8 @@ let g:ale_fixers = {
 \}
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 nnoremap <leader>z :CtrlPTag<cr>
+" CtrlSF shortcut"
+nnoremap <leader>gs :CtrlSF<cr>
+" ALE Commands "
+nnoremap <leader>ll :ALELint<cr>
+nnoremap <leader>lf :ALEFix<cr>

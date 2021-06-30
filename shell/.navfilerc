@@ -7,5 +7,6 @@ alias g2notes="cd ~/Documents/notes/"
 alias g2venvs='cd ~/.virtualenvs'
 alias grepr='grep -R'
 alias ackr='ack -R'
-alias fzvim='vim $(fzf)'
+alias vimf='vim $(fzf)'
 alias lsize='du -sh ./* '
+

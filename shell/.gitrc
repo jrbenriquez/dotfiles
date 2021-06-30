@@ -24,4 +24,5 @@ alias gft='git fetch'
 alias grbs='git rebase'
 alias grbsomas='git fetch && git rebase origin/master'
 alias grbsomain='git rebase origin/main'
+alias gamend='git commit --amend'
 export gmrgo(){git merge origin/$1}
