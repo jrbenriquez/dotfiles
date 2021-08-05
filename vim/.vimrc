@@ -1,3 +1,11 @@
+" Overview
+" Jedi: for go to features for python
+" Deoplete: autocompletion
+" Fzf: for all searches, files, folders, tags etc
+" ALE: linting
+" NERDTree: File nav
+" Tagbar: quick view 
+" exuberant-ctags: tags
 " plugins
 let need_to_install_plugins = 0
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -40,8 +48,6 @@ Plug 'psf/black', { 'branch': 'stable' }
 " Git Blame
 Plug 'zivyangll/git-blame.vim'
 Plug 'ivanov/vim-ipython'
-" Global Search
-Plug 'dyng/ctrlsf.vim'
 Plug 'vimwiki/vimwiki'
 " Autotag
 Plug 'craigemery/vim-autotag'
@@ -205,7 +211,7 @@ function NERDTreeToggle()
         wincmd p
     endif
 endfunction
-" Find file in tree 
+" Find file in tree
 nmap ,n :NERDTreeFind<CR>
 " Open NERDTree if no args provided
 "function! StartUp()
@@ -260,10 +266,15 @@ set wildmode=list:longest
 let g:fzf_layout = { 'window' : { 'width': 0.8, 'height': 0.8} }
 let $FZF_DEFAULT_OPTS='--reverse'
 " Quick Fzf
-nnoremap <leader>f :Files<CR> 
+nnoremap <leader>f :GFiles<CR>
+nnoremap <leader>a :Files<CR>
+nnoremap <leader>ns :BLines<CR>
+nnoremap <leader>nz :BTags<CR>
+nnoremap <leader>z :Tags<CR>
+nnoremap <leader>q :Rg<CR>
 
 " Quick Ack
-nnoremap <leader>a :Ack 
+" nnoremap <leader>a :Ack
 
 " Disable autocompletion (using deoplete instead)
 let g:jedi#completions_enabled = 0
@@ -323,10 +334,6 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
 \}
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-nnoremap <leader>z :CtrlPTag<cr>
-" CtrlSF shortcut"
-nnoremap <leader>gs :CtrlSF<cr>
 " ALE Commands "
 nnoremap <leader>ll :ALELint<cr>
 nnoremap <leader>lf :ALEFix<cr>

@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-alias mk-venv='pyenv virtualenv'
-alias ls-venv='pyenv virtualenvs'
-alias delete-venv='pyenv uninstall'
-alias use-venv='pyenv activate'
-alias deac-venv='pyenv deactivate'
-alias u-venv='pyenv activate'
-alias x-venv='pyenv deactivate'
+alias mkenv='pyenv virtualenv'
+alias lsenv='pyenv virtualenvs'
+alias delenv='pyenv uninstall'
+alias uenv='pyenv activate'
+alias xenv='pyenv deactivate'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=0

@@ -164,3 +164,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export FZF_DEFAULT_COMMAND="fdfind . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"
+
+# Created by `pipx` on 2021-07-15 05:38:34
+export PATH="$PATH:/home/johnreienriquez/.local/bin"

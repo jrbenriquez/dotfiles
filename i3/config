@@ -183,6 +183,7 @@ bar {
 exec --no-startup-id "xrandr --output HDMI-0 --right-of DVI-D-0"
 exec --no-startup-id "indicator-sound-switcher"
 exec --no-startup-id "barrier"
+exec --no-startup-id "caffeine-indicator"
 exec "sudo systemctl start xkeysnail"
 exec "gnome-terminal.wrapper"
 # Moving workspaces between screens 
@@ -195,3 +196,6 @@ bindsym $mod+less move workspace to output left
 
 # Hide Borders
 hide_edge_borders both
+
+# Flameshot screenshot 
+bindsym $mod+Shift+s exec "flameshot gui"
