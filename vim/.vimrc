@@ -337,3 +337,5 @@ let g:ale_fixers = {
 " ALE Commands "
 nnoremap <leader>ll :ALELint<cr>
 nnoremap <leader>lf :ALEFix<cr>
+"mac spawn
+let g:autotagStartMethod='fork'
