@@ -267,10 +267,10 @@ let g:fzf_layout = { 'window' : { 'width': 0.8, 'height': 0.8} }
 let $FZF_DEFAULT_OPTS='--reverse'
 " Quick Fzf
 nnoremap <leader>f :GFiles<CR>
-nnoremap <leader>a :Files<CR>
-nnoremap <leader>ns :BLines<CR>
+nnoremap <leader>F :Files<CR>
 nnoremap <leader>nz :BTags<CR>
 nnoremap <leader>z :Tags<CR>
+nnoremap <leader>nq :BLines<CR>
 nnoremap <leader>q :Rg<CR>
 
 " Quick Ack
