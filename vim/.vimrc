@@ -51,6 +51,8 @@ Plug 'ivanov/vim-ipython'
 Plug 'vimwiki/vimwiki'
 " Autotag
 Plug 'craigemery/vim-autotag'
+" ALE
+Plug 'dense-analysis/ale'
 call plug#end()
 
 set nocompatible
@@ -333,6 +335,7 @@ autocmd FileType python set sts=4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
+\   'python': ['autopep8', 'autoflake'],
 \}
 " ALE Commands "
 nnoremap <leader>ll :ALELint<cr>
