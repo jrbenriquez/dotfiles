@@ -53,6 +53,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'craigemery/vim-autotag'
 " ALE
 Plug 'dense-analysis/ale'
+" Show hex colors
+Plug 'ap/vim-css-color'
 call plug#end()
 
 set nocompatible
