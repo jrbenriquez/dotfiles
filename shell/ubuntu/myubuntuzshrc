@@ -143,6 +143,7 @@ alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
 # Custom aliases
 alias pip3='pip'
 alias fd='fdfind'
+alias uniconv='units -t'
 # django key bindings script
 source $DOTFILES_DIR/shell/.djangorc
 # vimwiki bindings script
@@ -167,3 +168,5 @@ export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"
 
 # Created by `pipx` on 2021-07-15 05:38:34
 export PATH="$PATH:/home/johnreienriquez/.local/bin"
+#
+export FZF_DEFAULT_OPTS='--layout=reverse --inline-info'

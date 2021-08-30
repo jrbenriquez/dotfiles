@@ -33,7 +33,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Ack code search (requires ack installed in the system)
 Plug 'mileszs/ack.vim'
 " Deoplete
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim' 
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 " Python autocompletion
@@ -55,6 +55,7 @@ Plug 'craigemery/vim-autotag'
 Plug 'dense-analysis/ale'
 " Show hex colors
 Plug 'ap/vim-css-color'
+Plug 'mbbill/undotree'
 call plug#end()
 
 set nocompatible
@@ -91,6 +92,11 @@ set fileencoding=utf-8
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+" Cursor block not thin line
+set guicursor=
+" Keep Buffers in background
+set hidden
+set scrolloff=8
 set colorcolumn=79,119
 set bs=2
 set expandtab
@@ -113,6 +119,7 @@ nmap <S-Right> w
 " Breaks the current line where the cursor is"
 nnoremap nl i<CR><ESC>
 nnoremap nL i<CR><ESC>O
+map <leader>gp %
 
 " indent/unindent with tab/shift-tab
 nmap <Tab> >>
@@ -229,17 +236,14 @@ nmap ,n :NERDTreeFind<CR>
 " tag list
 map <leader>t :TagbarToggle<CR>
 
+"Clipboard stuff"
+set clipboard=unnamed
 " copy, cut and paste
 vmap <C-c> "+y
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
-
-" Quickly insert an empty new line without entering insert mode
-" nnoremap o o<Esc>
-" nnoremap O O<Esc>
-
-set clipboard=unnamed
+nnoremap <leader>gu :UndotreeToggle<CR>
 
 " Deoplete -----------------------------
 
@@ -276,6 +280,8 @@ nnoremap <leader>nz :BTags<CR>
 nnoremap <leader>z :Tags<CR>
 nnoremap <leader>nq :BLines<CR>
 nnoremap <leader>q :Rg<CR>
+" Go To Definition
+nmap <leader>gd <C-]>
 
 " Quick Ack
 " nnoremap <leader>a :Ack
@@ -285,9 +291,10 @@ let g:jedi#completions_enabled = 0
 
 " All these mappings work only for python code:
 " Go to definition
-let g:jedi#goto_command = '<leader>gd'
+" THINKING ABOUT REMOVING JEDI SINCE we have tags for go to definitions now
+let g:jedi#goto_command = '<leader>gx'
 " Find ocurrences
-let g:jedi#usages_command = '<leader>gu'
+let g:jedi#usages_command = '<leader>go'
 " Find assignments
 let g:jedi#goto_assignments_command = '<leader>ga'
 " Go to definition in new tab

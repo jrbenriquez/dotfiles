@@ -199,3 +199,9 @@ hide_edge_borders both
 
 # Flameshot screenshot 
 bindsym $mod+Shift+s exec "flameshot gui"
+
+# Start new containers in tabbed mode
+workspace_layout tabbed
+
+# Start dev tools on workspace 6
+for_window [class="brave-browser" window_role="pop-up" title="/DevTools/"] floating enable, move container to workspace 6

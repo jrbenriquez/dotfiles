@@ -9,4 +9,4 @@ alias grepr='grep -R'
 alias ackr='ack -R'
 alias vimf='vim $(fzf)'
 alias lsize='du -sh ./* '
-
+alias xclip='xclip -sel c'
