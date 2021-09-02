@@ -168,5 +168,3 @@ export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"
 
 # Created by `pipx` on 2021-07-15 05:38:34
 export PATH="$PATH:/home/johnreienriquez/.local/bin"
-#
-export FZF_DEFAULT_OPTS='--layout=reverse --inline-info'

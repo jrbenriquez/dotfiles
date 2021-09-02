@@ -200,7 +200,9 @@ nnoremap <C-H> <C-W><C-H>
 nmap <leader>[ :bp!<CR>
 nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
+nmap <leader>X :bd!<CR>
 
+nnoremap <leader>t :Buffers<CR>
 nnoremap th :bp!<CR>
 nnoremap tl :bn!<CR>
 
@@ -234,13 +236,23 @@ nmap ,n :NERDTreeFind<CR>
 
 
 " tag list
-map <leader>t :TagbarToggle<CR>
+map tt :TagbarToggle<CR>
+" sed stuff
+map <C-S> :%s/
+map <C-s> ::s/
+
+" python comment
+vmap <leader>cm :s/^ /#<CR>
+nmap <leader>cm :s/^ /#<CR>
 
 "Clipboard stuff"
 set clipboard=unnamed
 " copy, cut and paste
 vmap <C-c> "+y
+vmap <leader>gc "+y
+
 vmap <C-x> "+c
+
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 nnoremap <leader>gu :UndotreeToggle<CR>
