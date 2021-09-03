@@ -244,6 +244,9 @@ map <C-s> ::s/
 " python comment
 vmap <leader>cm :s/^ /#<CR>
 nmap <leader>cm :s/^ /#<CR>
+" uncomment
+vmap <leader>uc :s/^#/ <CR>
+nmap <leader>uc :s/^#/ <CR>
 
 "Clipboard stuff"
 set clipboard=unnamed
