@@ -167,4 +167,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"
 
 # Created by `pipx` on 2021-07-15 05:38:34
-export PATH="$PATH:/home/johnreienriquez/.local/bin"
+export PATH="$PATH:/home/johnreienriquez/.local/bin:/home/johnreienriquez/Applications"

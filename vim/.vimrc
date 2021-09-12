@@ -76,6 +76,9 @@ set laststatus=2
 set t_Co=256
 set t_ut=
 
+" show partner
+set showmatch
+
 " turn on line numbering
 set number relativenumber
 set nu rnu
@@ -239,7 +242,7 @@ nmap ,n :NERDTreeFind<CR>
 map tt :TagbarToggle<CR>
 " sed stuff
 map <C-S> :%s/
-map <C-s> ::s/
+map <C-s> :s/
 
 " python comment
 vmap <leader>cm :s/^ /#<CR>
@@ -288,14 +291,16 @@ set wildmode=list:longest
 
 let g:fzf_layout = { 'window' : { 'width': 0.8, 'height': 0.8} }
 let $FZF_DEFAULT_OPTS='--reverse'
+let w:projectroot = trim(execute('pwd'))
 " Quick Fzf
-nnoremap <leader>f :GFiles<CR>
+nnoremap <leader>f :execute "Files " . w:projectroot<CR>
 nnoremap <leader>F :Files<CR>
 nnoremap <leader>nz :BTags<CR>
 nnoremap <leader>z :Tags<CR>
 nnoremap <leader>nq :BLines<CR>
 nnoremap <leader>q :Rg<CR>
-" Go To Definition
+nnoremap <leader>gst :GFiles?<CR>
+" Go To Definition using tags
 nmap <leader>gd <C-]>
 
 " Quick Ack
@@ -306,7 +311,8 @@ let g:jedi#completions_enabled = 0
 
 " All these mappings work only for python code:
 " Go to definition
-" THINKING ABOUT REMOVING JEDI SINCE we have tags for go to definitions now
+" I use this when looking into a package method/function that is not tracked
+" by tags 
 let g:jedi#goto_command = '<leader>gx'
 " Find ocurrences
 let g:jedi#usages_command = '<leader>go'
