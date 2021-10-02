@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+alias pych='$DOTFILES_DIR/chtsh/py-cht.sh'
+

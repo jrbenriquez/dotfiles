@@ -135,6 +135,9 @@ source $DOTFILES_DIR/shell/.tmuxrc
 # CTag Bindings 
 source $DOTFILES_DIR/shell/.ctagsrc
 
+# Python Reference
+source $DOTFILES_DIR/shell/.pythonrc
+
 # Zathura
 alias za='zathura'
 # vim install python dependencies
@@ -162,7 +165,7 @@ source $DOTFILES_DIR/fzf/.fzf-key-bindings
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-export FZF_DEFAULT_COMMAND="fdfind . $HOME"
+export FZF_DEFAULT_COMMAND="fdfind ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"
 

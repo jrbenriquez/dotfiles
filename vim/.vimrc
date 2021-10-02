@@ -243,6 +243,11 @@ map tt :TagbarToggle<CR>
 " sed stuff
 map <C-S> :%s/
 map <C-s> :s/
+" quick save
+nnoremap <leader>lw :update<CR>
+nnoremap <leader>lx :x
+" command
+nnoremap <leader>lc :
 
 " python comment
 vmap <leader>cm :s/^ /#<CR>
@@ -291,13 +296,13 @@ set wildmode=list:longest
 
 let g:fzf_layout = { 'window' : { 'width': 0.8, 'height': 0.8} }
 let $FZF_DEFAULT_OPTS='--reverse'
-let w:projectroot = trim(execute('pwd'))
+let projectroot = trim(execute('pwd'))
 " Quick Fzf
-nnoremap <leader>f :execute "Files " . w:projectroot<CR>
+nnoremap <leader>f :execute "Files " . projectroot<CR>
 nnoremap <leader>F :Files<CR>
-nnoremap <leader>nz :BTags<CR>
+nnoremap <leader>lz :BTags<CR>
 nnoremap <leader>z :Tags<CR>
-nnoremap <leader>nq :BLines<CR>
+nnoremap <leader>lq :BLines<CR>
 nnoremap <leader>q :Rg<CR>
 nnoremap <leader>gst :GFiles?<CR>
 " Go To Definition using tags
