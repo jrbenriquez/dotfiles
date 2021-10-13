@@ -152,6 +152,8 @@ source $DOTFILES_DIR/shell/.djangorc
 # vimwiki bindings script
 source $DOTFILES_DIR/shell/.vimwikirc
 
+export GO_ROOT="$HOME/go"
+export PATH="$GO_ROOT/bin:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

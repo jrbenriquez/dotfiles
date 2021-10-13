@@ -56,6 +56,7 @@ Plug 'dense-analysis/ale'
 " Show hex colors
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 set nocompatible
