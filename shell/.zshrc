@@ -11,7 +11,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jr/.oh-my-zsh"
 # Use Vim like interface in bash
- set -o vi
+# set -o vi
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -174,12 +174,13 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 PATH=$PATH:/usr/local/bin
 PATH=/usr/local/mysql/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 #fzf
-export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_DEFAULT_COMMAND="fd ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+export FZF_ALT_C_COMMAND="fd -t d ."
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
