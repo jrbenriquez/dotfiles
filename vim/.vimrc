@@ -245,7 +245,7 @@ map tt :TagbarToggle<CR>
 map <C-S> :%s/
 map <C-s> :s/
 " quick save
-nnoremap <leader>lw :update<CR>
+nnoremap <C-l><C-w> :update<CR>
 nnoremap <leader>lx :x
 " command
 nnoremap <leader>lc :
@@ -262,8 +262,6 @@ set clipboard=unnamed
 " copy, cut and paste
 vmap <C-c> "+y
 vmap <leader>gc "+y
-
-vmap <C-x> "+c
 
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
@@ -298,6 +296,10 @@ set wildmode=list:longest
 let g:fzf_layout = { 'window' : { 'width': 0.8, 'height': 0.8} }
 let $FZF_DEFAULT_OPTS='--reverse'
 let projectroot = trim(execute('pwd'))
+" Terminal
+nnoremap <C-x> :ter<CR>
+tnoremap <C-x> <C-W>N:bd!<CR>
+
 " Quick Fzf
 nnoremap <leader>f :execute "Files " . projectroot<CR>
 nnoremap <leader>F :Files<CR>

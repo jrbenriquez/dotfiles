@@ -140,6 +140,9 @@ source $DOTFILES_DIR/shell/.pythonrc
 
 # Zathura
 alias za='zathura'
+
+# source
+alias so='source'
 # vim install python dependencies
 alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
 
