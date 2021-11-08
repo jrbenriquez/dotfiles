@@ -246,6 +246,7 @@ map <C-S> :%s/
 map <C-s> :s/
 " quick save
 nnoremap <C-l><C-w> :update<CR>
+nnoremap ;<C-w> :update<CR>
 nnoremap <leader>lx :x
 " command
 nnoremap <leader>lc :

@@ -26,3 +26,4 @@ alias grbsomas='git fetch && git rebase origin/master'
 alias grbsomain='git rebase origin/main'
 alias gamend='git commit --amend'
 export gmrgo(){git merge origin/$1}
+alias gpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
