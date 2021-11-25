@@ -49,6 +49,7 @@ Plug 'psf/black', { 'branch': 'stable' }
 Plug 'zivyangll/git-blame.vim'
 Plug 'ivanov/vim-ipython'
 Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
 " Autotag
 Plug 'craigemery/vim-autotag'
 " ALE
@@ -381,3 +382,14 @@ nnoremap <leader>ll :ALELint<cr>
 nnoremap <leader>lf :ALEFix<cr>
 "mac spawn
 let g:autotagStartMethod='fork'
+" vim wiki todo custom checks
+let g:vimwiki_listsyms = '✗○◐●✓'
+
+autocmd VimEnter /home/johnreienriquez/vimwiki/diary/**  0r /home/johnreienriquez/vimwiki/diary/todo.template
+
+augroup templates
+  au!
+  " read in templates files
+  autocmd BufNewFile /home/johnreienriquez/vimwiki/diary/** silent! execute '0r /home/johnreienriquez/vimwiki/diary/todo.template'
+augroup END
+
