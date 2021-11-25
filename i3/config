@@ -186,16 +186,14 @@ exec --no-startup-id "xrandr --output HDMI-0 --right-of DVI-D-0"
 exec --no-startup-id "indicator-sound-switcher"
 exec --no-startup-id "barrier"
 exec --no-startup-id "caffeine-indicator"
-exec --no-startup-id compton -b -f
+# Wallpaper
+exec --no-startup-id "compton -b -f"
+exec --no-startup-id "nitrogen --restore"
 exec "sudo systemctl start xkeysnail"
-exec "gnome-terminal.wrapper"
 # Moving workspaces between screens 
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
 
-# Wallpaper
-
-#feh --bg-scale /home/johnreienriquez/Documents/i3themes/i3themes/Colors/Colors.png
 
 # Hide Borders
 hide_edge_borders both
