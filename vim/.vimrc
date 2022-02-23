@@ -259,6 +259,12 @@ nmap <leader>cm :s/^ /#<CR>
 vmap <leader>uc :s/^#/ <CR>
 nmap <leader>uc :s/^#/ <CR>
 
+"Tag Handling
+"End Tag New Line
+nnoremap <leader>tg yypa/<ESC>O
+"End Tag Inline
+nnoremap <leader>ti vF<yf>pbi/<ESC>ba
+
 "Clipboard stuff"
 set clipboard=unnamed
 " copy, cut and paste
@@ -375,7 +381,7 @@ autocmd FileType python set sts=4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
-\   'python': ['autopep8', 'autoflake'],
+\   'python': ['autopep8', 'autoflake', 'isort'],
 \}
 " ALE Commands "
 nnoremap <leader>ll :ALELint<cr>
