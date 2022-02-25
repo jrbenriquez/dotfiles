@@ -7,6 +7,14 @@
 " Tagbar: quick view 
 " exuberant-ctags: tags
 " plugins
+" Use diffirent viminfo/shada file for vim/neovim respectively
+if !has('nvim')
+  set viminfo+=n~/vim/viminfo
+else
+  " Do nothing here to use the neovim default
+  " or do soemething like:
+  " set viminfo+=n~/.shada
+endif
 let need_to_install_plugins = 0
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -105,10 +113,11 @@ set scrolloff=8
 set colorcolumn=79,119
 set bs=2
 set expandtab
-set viminfo='25,\"50,n~/.viminfo
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+imap jj <Esc>
 
 " word movement
 imap <S-Left> <Esc>bi
@@ -124,7 +133,9 @@ nmap <S-Right> w
 " Breaks the current line where the cursor is"
 nnoremap nl i<CR><ESC>
 nnoremap nL i<CR><ESC>O
+" Go to partner 
 map <leader>gp %
+nnoremap <C-j> {
 
 " indent/unindent with tab/shift-tab
 nmap <Tab> >>

@@ -220,4 +220,5 @@ assign [class="Org.gnome.Nautilus"] $ws7
 
 exec --no-startup-id i3-msg 'workspace 9; exec kitty'
 exec --no-startup-id i3-msg 'workspace 10; exec kitty'
+exec --no-startup-id i3-msg 'workspace 1; exec brave-browser'
 

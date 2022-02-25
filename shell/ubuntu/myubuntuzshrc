@@ -151,6 +151,8 @@ alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
 alias pip3='pip'
 alias fd='fdfind'
 alias uniconv='units -t'
+alias vim='nvim'
+alias v='nvim'
 # Fuzzy Source
 alias fzs='source "$(fzf)"'
 # Fuzzy Branch
@@ -176,7 +178,7 @@ source $DOTFILES_DIR/fzf/.fzf-key-bindings
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-export FZF_DEFAULT_COMMAND="fdfind ."
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fdfind -t d . $HOME $HOME/.config"
 

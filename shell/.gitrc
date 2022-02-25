@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
-
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
 alias gpso='git push origin HEAD'
 alias gplo='git pull origin'
 alias gcb='git checkout -b'
 alias gcmsg='git commit -m'
-alias gco='git checkout'
+#alias gco='git checkout'
+unalias gco
 alias gcp='git cherry-pick'
 alias gd='git diff'
 alias gdca='git diff --cached'
@@ -30,3 +33,17 @@ alias gpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias gunstage='git restore --staged'
 
 alias lzga='git diff --name-only --diff-filter=ADMRU | fzf | xargs git add'
+gitb() {
+  is_in_git_repo &&
+    git branch -a -vv --color=always | grep -v '/HEAD\s' |
+    fzf --height 40% --ansi --multi --tac | sed 's/^..//' | awk '{print $1}' |
+    sed 's#^remotes/[^/]*/##'
+}
+
+gco() {
+    if [ $# -eq 0 ]; then
+        git checkout $(gitb)
+    else
+        git checkout $1
+    fi
+}

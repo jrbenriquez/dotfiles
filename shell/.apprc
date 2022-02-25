@@ -1,0 +1,2 @@
+WORKNOTES_DIR=/home/johnreienriquez/Code/worknotes
+alias worknotes="cd $WORKNOTES_DIR; python manage.py runserver 0.0.0.0:8001"
