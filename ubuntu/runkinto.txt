@@ -1,0 +1,7 @@
+Run kinto after install
+
+sudo xkeysnail ~/.config/kinto/kinto.py 
+
+then start on every boot
+
+sudo systemctl start xkeysnail
