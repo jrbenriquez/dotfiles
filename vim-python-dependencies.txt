@@ -3,3 +3,4 @@ neovim
 flake8
 pylint
 pylint-django
+black

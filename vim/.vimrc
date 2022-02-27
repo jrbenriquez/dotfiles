@@ -13,7 +13,7 @@ if !has('nvim')
 else
   " Do nothing here to use the neovim default
   " or do soemething like:
-  " set viminfo+=n~/.shada
+   set viminfo+=n~/.shada
 endif
 let need_to_install_plugins = 0
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -66,6 +66,10 @@ Plug 'dense-analysis/ale'
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
 Plug 'wakatime/vim-wakatime'
+" Auto bracket completion
+Plug 'jiangmiao/auto-pairs'
+" Commenting plugin
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 set nocompatible
@@ -392,7 +396,7 @@ autocmd FileType python set sts=4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
-\   'python': ['autopep8', 'autoflake', 'isort'],
+\   'python': ['autopep8', 'autoflake', 'isort', 'black'],
 \}
 " ALE Commands "
 nnoremap <leader>ll :ALELint<cr>
