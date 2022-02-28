@@ -55,7 +55,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'psf/black', { 'branch': 'stable' }
 " Git Blame
 Plug 'zivyangll/git-blame.vim'
-Plug 'ivanov/vim-ipython'
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
 " Autotag
@@ -121,7 +120,6 @@ autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
-imap jj <Esc>
 
 " word movement
 imap <S-Left> <Esc>bi
@@ -312,6 +310,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " disabled by default because preview makes the window flicker
 set completeopt-=preview
 
+
 " autocompletion of files and commands behaves like shell
 " (complete only the common part, list the options that match)
 set wildmode=list:longest
@@ -339,6 +338,7 @@ nmap <leader>gd <C-]>
 
 " Disable autocompletion (using deoplete instead)
 let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = 1
 
 " All these mappings work only for python code:
 " Go to definition
@@ -396,8 +396,10 @@ autocmd FileType python set sts=4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
-\   'python': ['autopep8', 'autoflake', 'isort', 'black'],
+\   'python': ['autoflake', 'black'],
 \}
+
+let g:ale_linters = {'python': ['pylint']}
 " ALE Commands "
 nnoremap <leader>ll :ALELint<cr>
 nnoremap <leader>lf :ALEFix<cr>
@@ -414,3 +416,12 @@ augroup templates
   autocmd BufNewFile /home/johnreienriquez/vimwiki/diary/** silent! execute '0r /home/johnreienriquez/vimwiki/diary/todo.template'
 augroup END
 
+" Fun Stuff
+" Bordered Text
+nmap <leader>-b :.!toilet -w 200 -f term -F border<CR>
+" Heading
+nmap <leader>-h :.!toilet -w 200 -f standard<CR>
+" SubHeading
+nmap <leader>-s :.!toilet -w 200 -f small<CR>
+" hide everything
+nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler!<CR>
