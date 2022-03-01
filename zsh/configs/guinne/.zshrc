@@ -143,6 +143,8 @@ source $DOTFILES_DIR/shell/.ctagsrc
 # Python Reference
 source $DOTFILES_DIR/shell/.pythonrc
 
+# django Reference
+source $DOTFILES_DIR/shell/.djangorc
 # Custom App Reference
 #source $DOTFILES_DIR/shell/.apprc
 
@@ -159,5 +161,17 @@ alias vimf='vim $(fzf)'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l'
 export FZF_ALT_C_COMMAND="fdfind -t d . $HOME $HOME/.config"
 
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init --path)"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias screenkey=screenkey -s small
+alias config="cd ~/.config"

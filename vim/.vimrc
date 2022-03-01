@@ -7,40 +7,59 @@
 " Tagbar: quick view 
 " exuberant-ctags: tags
 " plugins
+let need_to_install_plugins = 0
 " Use diffirent viminfo/shada file for vim/neovim respectively
 if !has('nvim')
   set viminfo+=n~/vim/viminfo
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        let need_to_install_plugins = 1
+    endif
 else
   " Do nothing here to use the neovim default
   " or do soemething like:
    set viminfo+=n~/.shada
-endif
-let need_to_install_plugins = 0
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    let need_to_install_plugins = 1
+    if empty(glob('~/.config/nvim/autoload/plug.vim'))
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        let need_to_install_plugins = 1
+    endif
 endif
 
 call plug#begin()
+" Set of vim defaults we can agree on and hopefully not talk about
 Plug 'tpope/vim-sensible'
+" Minimalist statusline
 Plug 'itchyny/lightline.vim'
+" Distraction Free Plugin
+Plug 'junegunn/goyo.vim'
+" Cool theme
 Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
-Plug 'sjl/badwolf'
+" HTML Tags
+Plug 'alvan/vim-closetag' 
+" Buffers #1! No tabs
 Plug 'ap/vim-buftabline'
+" Git info
 Plug 'airblade/vim-gitgutter'
+" File Navigation
 Plug 'preservim/nerdtree'
+" NERDTRee side tabs (no longer maintained though)
 Plug 'jistr/vim-nerdtree-tabs'
+" Git indicators in NERDTree
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" Load Tags on the right side
 Plug 'majutsushi/tagbar'
+" Language specific scripts/plugins
 Plug 'vim-scripts/indentpython.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-surround'
-"Plug 'alvan/vim-closetag'
+" Black formatter
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'maxmellon/vim-jsx-pretty'
+" Surround
+Plug 'tpope/vim-surround'
 " Ack code search (requires ack installed in the system)
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 " Deoplete
 Plug 'Shougo/deoplete.nvim' 
 Plug 'roxma/nvim-yarp'
@@ -53,10 +72,10 @@ Plug 'davidhalter/jedi-vim'
 " FZF Fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'psf/black', { 'branch': 'stable' }
 " Git Blame
 Plug 'zivyangll/git-blame.vim'
 Plug 'vimwiki/vimwiki'
+" Fun calendar plugin
 Plug 'mattn/calendar-vim'
 " Autotag
 Plug 'craigemery/vim-autotag'
@@ -64,6 +83,7 @@ Plug 'craigemery/vim-autotag'
 Plug 'dense-analysis/ale'
 " Show hex colors
 Plug 'ap/vim-css-color'
+" fancy undo history
 Plug 'mbbill/undotree'
 Plug 'wakatime/vim-wakatime'
 " Auto bracket completion
@@ -221,7 +241,7 @@ nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 nmap <leader>X :bd!<CR>
 
-nnoremap <leader>t :Buffers<CR>
+nnoremap <leader>ts :Buffers<CR>
 nnoremap th :bp!<CR>
 nnoremap tl :bn!<CR>
 
@@ -397,10 +417,11 @@ autocmd FileType python set sts=4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
-\   'python': ['autoflake', 'black'],
+\   'python': ['black', 'isort'],
 \}
 
-let g:ale_linters = {'python': ['pylint']}
+let g:ale_linters = {'python': ['flake8']}
+let g:ale_python_isort_options = '--profile black --fass --fss --sl'
 " ALE Commands "
 nnoremap <leader>ll :ALELint<cr>
 nnoremap <leader>lf :ALEFix<cr>
@@ -417,7 +438,10 @@ augroup templates
   autocmd BufNewFile /home/johnreienriquez/vimwiki/diary/** silent! execute '0r /home/johnreienriquez/vimwiki/diary/todo.template'
 augroup END
 
-" Fun Stuff
+" Presentation Stuff
+" No Distract mode
+nmap <leader>-gg :Goyo<CR>
+nmap <leader>-gx :Goyo<CR>:so ~/.config/nvim/init.vim<CR>
 " Bordered Text
 nmap <leader>-b :.!toilet -w 200 -f term -F border<CR>
 " Heading
