@@ -153,6 +153,8 @@ nmap <S-Right> w
 "nnoremap th :tabprev<CR>
 "nnoremap tn :tabnew<CR>
 
+" Regenerate Tags
+nnoremap <leader>rtg :!ctags -R --exclude=node_modules --exclude=.git --exclude=static --exclude=build --exclude=asset --exclude=assets -f tags<CR><CR>
 " Breaks the current line where the cursor is"
 nnoremap nl i<CR><ESC>
 nnoremap nL i<CR><ESC>O
@@ -273,6 +275,9 @@ nmap ,n :NERDTreeFind<CR>
 "endfunction
 "autocmd VimEnter * call StartUp()
 
+
+nnoremap <C-w>j :50winc <<CR>
+nnoremap <C-w>k :50winc ><CR>
 
 " tag list
 map tt :TagbarToggle<CR>
