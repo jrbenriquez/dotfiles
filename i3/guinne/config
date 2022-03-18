@@ -188,7 +188,7 @@ bar {
         status_command i3status 
 }
 
-exec --no-startup-id "xrandr --output HDMI-1 --right-of DP-1"
+exec --no-startup-id "xrandr --output DVI-D-1 --right-of HDMI-1"
 exec --no-startup-id "indicator-sound-switcher"
 #exec --no-startup-id "barrier"
 #exec --no-startup-id "caffeine-indicator"
@@ -197,6 +197,8 @@ exec --no-startup-id "compton -b -f"
 exec --no-startup-id "nitrogen --restore"
 # Running Kinto.sh
 exec --no-startup-id "sudo xkeysnail ~/.config/kinto/kinto.py"
+exec --nostartup-id "systemctl start xkeysnail"
+
 # Keychron function keys
 exec --no-startup-id "echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode"
 # Moving workspaces between screens 
