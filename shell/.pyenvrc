@@ -4,5 +4,7 @@ alias mkenv='pyenv virtualenv'
 alias lsenv='pyenv virtualenvs'
 alias delenv='pyenv uninstall'
 alias uenv='pyenv activate'
+alias workon='pyenv activate'
 alias xenv='pyenv deactivate'
+alias deac='pyenv deactivate'
 export PYENV_VIRTUALENV_DISABLE_PROMPT=0

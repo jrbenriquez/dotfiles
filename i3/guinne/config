@@ -41,7 +41,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -93,7 +93,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+t floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -178,8 +178,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable
-bindsym $mod+y exec "gnome-calculator" 
 bindsym $mod+n exec "nautilus" 
+bindsym $mod+y exec "obsidian.AppImage" 
 bindsym $mod+b exec "firefox" 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -190,8 +190,7 @@ bar {
 
 exec --no-startup-id "xrandr --output DVI-D-1 --right-of HDMI-1"
 exec --no-startup-id "indicator-sound-switcher"
-#exec --no-startup-id "barrier"
-#exec --no-startup-id "caffeine-indicator"
+#exec --no-startup-id "barrier" exec --no-startup-id "caffeine-indicator"
 # Wallpaper
 exec --no-startup-id "compton -b -f"
 exec --no-startup-id "nitrogen --restore"
@@ -217,13 +216,15 @@ workspace_layout tabbed
 
 # Start dev tools on workspace 6
 for_window [class="brave-browser" window_role="pop-up" title="/DevTools/"] floating enable, move container to workspace 6
+for_window [class="flameshot"] floating enable
 
 assign [class="Slack"] $ws3
 assign [class="Brave-browser"] $ws1
-assign [class="obs"] $ws5
 assign [class="Org.gnome.Nautilus"] $ws7
+assign [class="obsidian"] $ws8
+assign [class="obs"] $ws5
 
-exec --no-startup-id i3-msg 'workspace 9; exec kitty'
-exec --no-startup-id i3-msg 'workspace 10; exec kitty'
+exec --no-startup-id i3-msg 'workspace 9; exec gnome-terminal'
+exec --no-startup-id i3-msg 'workspace 10; exec gnome-terminal'
 
 for_window [class=".*"] border pixel 1 
