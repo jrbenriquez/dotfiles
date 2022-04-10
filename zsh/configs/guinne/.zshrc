@@ -177,3 +177,8 @@ export NVM_DIR="$HOME/.nvm"
 
 alias screenkey=screenkey -s small
 alias config="cd ~/.config"
+
+#lazygit
+alias lz=lazygit
+
+bindkey '^H' backward-kill-word
