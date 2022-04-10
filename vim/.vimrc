@@ -90,6 +90,8 @@ Plug 'wakatime/vim-wakatime'
 Plug 'jiangmiao/auto-pairs'
 " Commenting plugin
 Plug 'scrooloose/nerdcommenter'
+" Floatterm
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 set nocompatible
@@ -344,14 +346,18 @@ tnoremap <C-x> <C-W>N:bd!<CR>
 " Quick Fzf
 nnoremap <leader>f :execute "Files " . projectroot<CR>
 nnoremap <leader>F :Files<CR>
-nnoremap <leader>lz :BTags<CR>
+nnoremap <leader>.z :BTags<CR>
 nnoremap <leader>z :Tags<CR>
-nnoremap <leader>lq :BLines<CR>
+nnoremap <leader>.q :BLines<CR>
 nnoremap <leader>q :Rg<CR>
 " nnoremap <leader>gst :GFiles?<CR>
 nnoremap <leader>gst :Neotree git_status<CR>
 " Go To Definition using tags
 nmap <leader>gd <C-]>
+nnoremap <leader>lt :FloatermNew<CR>
+nnoremap <leader>lz :FloatermNew --height=0.9 --width=0.9 lazygit<CR>
+nnoremap <leader>lpy :FloatermNew --height=0.9 --width=0.9 python<CR>
+let g:floaterm_keymap_toggle = '<F12>'
 
 " Quick Ack
 " nnoremap <leader>a :Ack
