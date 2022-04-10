@@ -150,6 +150,8 @@ source $DOTFILES_DIR/shell/.djangorc
 
 # source
 alias so='source'
+alias v='vim'
+alias vi='vim'
 # vim install python dependencies
 alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
 

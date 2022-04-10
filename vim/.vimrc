@@ -43,11 +43,15 @@ Plug 'ap/vim-buftabline'
 " Git info
 Plug 'airblade/vim-gitgutter'
 " File Navigation
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 " NERDTRee side tabs (no longer maintained though)
-Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'jistr/vim-nerdtree-tabs'
 " Git indicators in NERDTree
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Neo Tree
+Plug 'nvim-neo-tree/neo-tree.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-lua/plenary.nvim'
 " Load Tags on the right side
 Plug 'majutsushi/tagbar'
 " Language specific scripts/plugins
@@ -235,16 +239,18 @@ endfunction
 " move through split windows
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L>l <C-W><C-L>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <C-W><C-U> :vsplit<CR>
+nnoremap <C-W><C-I> :split<CR>
 " move through buffers
 nmap <leader>[ :bp!<CR>
 nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 nmap <leader>X :bd!<CR>
 
-nnoremap <leader>ts :Buffers<CR>
+" nnoremap <leader>ts :Buffers<CR>
+nnoremap <leader>ts :Neotree buffers<CR>
 nnoremap th :bp!<CR>
 nnoremap tl :bn!<CR>
 
@@ -256,18 +262,9 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let NERDTreeMinimalUI = 1
 let g:nerdtree_open = 0
 let g:NERDTreeChDirMode = 2
-map <leader>d :call NERDTreeToggle()<CR>
-function NERDTreeToggle()
-    NERDTreeTabsToggle
-    if g:nerdtree_open == 1
-        let g:nerdtree_open = 0
-    else
-        let g:nerdtree_open = 1
-        wincmd p
-    endif
-endfunction
+map <leader>d :Neotree focus toggle<CR>
 " Find file in tree
-nmap ,n :NERDTreeFind<CR>
+nmap ,n :Neotree filesystem reveal<CR>
 " Open NERDTree if no args provided
 "function! StartUp()
 "    if 0 == argc()
@@ -285,9 +282,8 @@ map tt :TagbarToggle<CR>
 " sed stuff
 map <C-S> :%s/
 map <C-s> :s/
-" quick save
-nnoremap <C-l><C-w> :update<CR>
-nnoremap ;<C-w> :update<CR>
+" quick saves
+nnoremap <leader>lw :update<CR>
 nnoremap <leader>lx :x
 " command
 nnoremap <leader>lc :
@@ -356,7 +352,8 @@ nnoremap <leader>lz :BTags<CR>
 nnoremap <leader>z :Tags<CR>
 nnoremap <leader>lq :BLines<CR>
 nnoremap <leader>q :Rg<CR>
-nnoremap <leader>gst :GFiles?<CR>
+" nnoremap <leader>gst :GFiles?<CR>
+nnoremap <leader>gst :Neotree git_status<CR>
 " Go To Definition using tags
 nmap <leader>gd <C-]>
 
