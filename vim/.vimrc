@@ -43,11 +43,7 @@ Plug 'ap/vim-buftabline'
 " Git info
 Plug 'airblade/vim-gitgutter'
 " File Navigation
-" Plug 'preservim/nerdtree'
-" NERDTRee side tabs (no longer maintained though)
-" Plug 'jistr/vim-nerdtree-tabs'
-" Git indicators in NERDTree
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'fisadev/vim-isort'
 " Neo Tree
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'MunifTanjim/nui.nvim'
@@ -420,7 +416,7 @@ autocmd FileType python set sts=4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
-\   'python': ['black', 'isort'],
+\   'python': ['black', ],
 \}
 
 let g:ale_linters = {'python': ['flake8']}
