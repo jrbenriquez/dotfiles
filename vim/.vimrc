@@ -44,10 +44,11 @@ Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
 " File Navigation
 Plug 'fisadev/vim-isort'
-" Neo Tree
-Plug 'nvim-neo-tree/neo-tree.nvim'
-Plug 'MunifTanjim/nui.nvim'
-Plug 'nvim-lua/plenary.nvim'
+" NerdTree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
 " Load Tags on the right side
 Plug 'majutsushi/tagbar'
 " Language specific scripts/plugins
@@ -92,6 +93,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 " Floatterm
 Plug 'voldikss/vim-floaterm'
+" PlantUML Stuff
+Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
 call plug#end()
 
 set nocompatible
@@ -247,8 +251,7 @@ nmap <leader>] :bn!<CR>
 nmap <leader>x :bd<CR>
 nmap <leader>X :bd!<CR>
 
-" nnoremap <leader>ts :Buffers<CR>
-nnoremap <leader>ts :Neotree buffers<CR>
+nnoremap <leader>ts :Buffers<CR>
 nnoremap th :bp!<CR>
 nnoremap tl :bn!<CR>
 
@@ -257,12 +260,14 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 
 " file browser
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let NERDTreeMinimalUI = 1
+let NERDTreeMinimalUI = 0
+let g:NERDTreeGitStatusWithFlags  = 1
 let g:nerdtree_open = 0
 let g:NERDTreeChDirMode = 2
-map <leader>d :Neotree focus toggle<CR>
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+map <leader>d :NERDTreeToggle<CR>
 " Find file in tree
-nmap ,n :Neotree filesystem reveal<CR>
+nmap ,n :NERDTreeFind<CR>
 " Open NERDTree if no args provided
 "function! StartUp()
 "    if 0 == argc()
@@ -285,6 +290,7 @@ nnoremap <leader>lw :update<CR>
 nnoremap <leader>lx :x
 " command
 nnoremap <leader>lc :
+nnoremap <leader>lh :noh<CR>
 
 " python comment
 vmap <leader>cm :s/^ /#<CR>
@@ -357,6 +363,8 @@ nmap <leader>gd <C-]>
 nnoremap <leader>lt :FloatermNew<CR>
 nnoremap <leader>lz :FloatermNew --height=0.9 --width=0.9 lazygit<CR>
 nnoremap <leader>lpy :FloatermNew --height=0.9 --width=0.9 python<CR>
+let g:floaterm_keymap_prev   = '<F8>'
+let g:floaterm_keymap_next   = '<F9>'
 let g:floaterm_keymap_toggle = '<F12>'
 
 " Quick Ack
@@ -422,10 +430,13 @@ autocmd FileType python set sts=4
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
+\   'css': ['prettier'],
+\   'less': ['prettier'],
 \   'python': ['black', ],
+\   'typescript': ['prettier', 'eslint', 'tslint'],
 \}
 
-let g:ale_linters = {'python': ['flake8']}
+let g:ale_linters = {'python': ['flake8', 'pyflakes']}
 let g:ale_python_isort_options = '--profile black --fass --fss --sl'
 " ALE Commands "
 nnoremap <leader>ll :ALELint<cr>
@@ -455,3 +466,27 @@ nmap <leader>-h :.!toilet -w 200 -f standard<CR>
 nmap <leader>-s :.!toilet -w 200 -f small<CR>
 " hide everything
 nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler!<CR>
+
+" Close Terminal Mode
+tnoremap <Esc> <C-\><C-n>:q!<CR>
+
+" Highlight Duplicates
+function! HighlightRepeats() range
+  let lineCounts = {}
+  let lineNum = a:firstline
+  while lineNum <= a:lastline
+    let lineText = getline(lineNum)
+    if lineText != ""
+      let lineCounts[lineText] = (has_key(lineCounts, lineText) ? lineCounts[lineText] : 0) + 1
+    endif
+    let lineNum = lineNum + 1
+  endwhile
+  exe 'syn clear Repeat'
+  for lineText in keys(lineCounts)
+    if lineCounts[lineText] >= 2
+      exe 'syn match Repeat "^' . escape(lineText, '".\^$*[]') . '$"'
+    endif
+  endfor
+endfunction
+
+command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()

@@ -178,8 +178,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable
+for_window [class="SpeedCrunch" instance="speedcrunch"] floating enable
 bindsym $mod+n exec "nautilus" 
 bindsym $mod+y exec "obsidian.AppImage" 
+bindsym Print exec "speedcrunch" 
 bindsym $mod+b exec "firefox" 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -187,6 +189,7 @@ bindsym $mod+b exec "firefox"
 bar {
         status_command i3status 
 }
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec --no-startup-id "xrandr --output DVI-D-0 --primary --right-of HDMI-0"
 exec --no-startup-id "indicator-sound-switcher"

@@ -166,6 +166,8 @@ export FZF_ALT_C_COMMAND="fdfind -t d . $HOME $HOME/.config"
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/home/johnreienriquez/go/bin:$PATH"
+
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init --path)"
@@ -182,3 +184,18 @@ alias config="cd ~/.config"
 alias lz=lazygit
 
 bindkey '^H' backward-kill-word
+
+
+# Auto load .rc files if any present in folder
+function chpwd() {
+    emulate -L zsh
+    if test -f ".rc"; then
+        echo "Loading .rc"
+        for file in `ls .rc`; do source $file >/dev/null 2>&1; done 
+        echo ".rc Loaded!"
+    fi
+}
+
+alias rsxkeys="pgrep xkeysnail | xargs sudo kill -9 && sudo xkeysnail --quiet --watch ~/.config/kinto/kinto.py &"
+
+# eval $(thefuck --alias)
