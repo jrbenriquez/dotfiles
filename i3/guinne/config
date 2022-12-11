@@ -179,7 +179,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable
 for_window [class="SpeedCrunch" instance="speedcrunch"] floating enable
-bindsym $mod+n exec "nautilus" 
+for_window [class="lua5.1"] floating enable
+bindsym $mod+n exec "thunar" 
 bindsym $mod+y exec "obsidian.AppImage" 
 bindsym Print exec "speedcrunch" 
 bindsym $mod+b exec "firefox" 
@@ -193,7 +194,8 @@ bar {
 
 exec --no-startup-id "xrandr --output DVI-D-0 --primary --right-of HDMI-0"
 exec --no-startup-id "indicator-sound-switcher"
-#exec --no-startup-id "barrier" exec --no-startup-id "caffeine-indicator"
+exec --no-startup-id "barrier"
+#exec --no-startup-id "caffeine-indicator"
 # Wallpaper
 exec --no-startup-id "compton -b -f"
 exec --no-startup-id "nitrogen --restore"
@@ -224,6 +226,7 @@ for_window [class="flameshot"] floating enable
 assign [class="Slack"] $ws3
 assign [class="Brave-browser"] $ws1
 assign [class="Org.gnome.Nautilus"] $ws7
+assign [class="Thunar"] $ws7
 assign [class="obsidian"] $ws8
 assign [class="obs"] $ws5
 

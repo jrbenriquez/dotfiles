@@ -141,7 +141,7 @@ set guicursor=
 " Keep Buffers in background
 set hidden
 set scrolloff=8
-set colorcolumn=79,119
+set colorcolumn=99,119
 set bs=2
 set expandtab
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
@@ -499,3 +499,6 @@ command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
 com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
 
 nnoremap = :FormatXML<Cr>
+
+" isort
+let g:vim_isort_map = '<leader>i'"

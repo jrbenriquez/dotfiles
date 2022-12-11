@@ -199,3 +199,5 @@ function chpwd() {
 alias rsxkeys="pgrep xkeysnail | xargs sudo kill -9 && sudo xkeysnail --quiet --watch ~/.config/kinto/kinto.py &"
 
 # eval $(thefuck --alias)
+#
+alias pr="poetry run"
