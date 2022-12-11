@@ -113,9 +113,10 @@ eval "$(pyenv init -)"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export DOTFILES_DIR=~/Code/dotfiles
-alias vi=/usr/local/bin/vim
-alias vim=/usr/local/bin/vim
+alias vi=/usr/local/bin/nvim
+alias vim=/usr/local/bin/nvim
 alias tmux=tmux -u
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 #export LC_ALL=en_US.UTF-8
 export LC_ALL=C
@@ -176,13 +177,14 @@ PATH=/usr/local/mysql/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
+#export PATH="/Users/jr/.local/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 #fzf
 export FZF_DEFAULT_COMMAND="fd ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME/Code/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if type brew &>/dev/null
@@ -192,3 +194,9 @@ then
   autoload -Uz compinit
   compinit
 fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+eval "$(pyenv init -)"
+# export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+# export PATH="/opt/homebrew/bin:$PATH"
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+export PATH="/Users/jr/.local/bin:$PATH"

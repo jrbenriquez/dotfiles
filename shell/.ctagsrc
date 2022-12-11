@@ -1,2 +1,2 @@
-alias rtg="rm tags; ctags -R --exclude=node_modules --exclude=.git --exclude=static --exclude=build --exclude=asset --exclude=assets -f tags"
+alias rtg="rm tags; ctags -R --exclude=node_modules --exclude=.git --exclude=static --exclude=build --exclude=asset --exclude=assets --exclude=.yarn --exclude=dist -f tags"
 

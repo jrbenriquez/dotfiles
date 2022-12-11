@@ -93,9 +93,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 " Floatterm
 Plug 'voldikss/vim-floaterm'
-" PlantUML Stuff
-Plug 'scrooloose/vim-slumlord'
-Plug 'aklt/plantuml-syntax'
+" vim box-draw
+Plug 'gyim/vim-boxdraw'
 call plug#end()
 
 set nocompatible
@@ -109,6 +108,8 @@ if need_to_install_plugins == 1
     q
 endif
 
+" fast timeout
+set timeoutlen=200
 " always show the status bar
 set laststatus=2
 
@@ -175,6 +176,11 @@ imap <S-Tab> <Esc><<i
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
+
+" add new line without going to insert mode
+nmap oo o<Esc>k 
+nmap OO O<Esc>j
+
 " mouse
 set mouse=a
 let g:is_mouse_enabled = 1
@@ -208,7 +214,7 @@ hi Normal guibg=NONE ctermbg=NONE
 " wrap toggle
 setlocal nowrap
 set nowrap
-noremap <silent> <Leader>w :call ToggleWrap()<CR>
+noremap <silent> <Leader>lw :call ToggleWrap()<CR>
 function ToggleWrap()
     if &wrap
         echo "Wrap OFF"
@@ -286,8 +292,8 @@ map tt :TagbarToggle<CR>
 map <C-S> :%s/
 map <C-s> :s/
 " quick saves
-nnoremap <leader>lw :update<CR>
-nnoremap <leader>lx :x
+nmap <leader>w :w<CR>
+nmap <leader>lx :x<CR>
 " command
 nnoremap <leader>lc :
 nnoremap <leader>lh :noh<CR>
@@ -490,3 +496,6 @@ function! HighlightRepeats() range
 endfunction
 
 command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
+com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+
+nnoremap = :FormatXML<Cr>
