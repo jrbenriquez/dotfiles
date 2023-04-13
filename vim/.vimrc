@@ -47,7 +47,7 @@ Plug 'fisadev/vim-isort'
 " NerdTree
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 " Load Tags on the right side
 Plug 'majutsushi/tagbar'
@@ -95,6 +95,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'voldikss/vim-floaterm'
 " vim box-draw
 Plug 'gyim/vim-boxdraw'
+" CtrlSF
+Plug 'dyng/ctrlsf.vim'
+" multiple line cursors
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 set nocompatible
@@ -170,8 +174,6 @@ map <leader>gp %
 nnoremap <C-j> {
 
 " indent/unindent with tab/shift-tab
-nmap <Tab> >>
-nmap <S-tab> <<
 imap <S-Tab> <Esc><<i
 vmap <Tab> >gv
 vmap <S-Tab> <gv
@@ -271,7 +273,7 @@ let g:NERDTreeGitStatusWithFlags  = 1
 let g:nerdtree_open = 0
 let g:NERDTreeChDirMode = 2
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-map <leader>d :NERDTreeToggle<CR>
+map <leader>e :NERDTreeToggle<CR>
 " Find file in tree
 nmap ,n :NERDTreeFind<CR>
 " Open NERDTree if no args provided
@@ -285,6 +287,9 @@ nmap ,n :NERDTreeFind<CR>
 
 nnoremap <C-w>j :50winc <<CR>
 nnoremap <C-w>k :50winc ><CR>
+" quick move lines : by thePrimagean
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " tag list
 map tt :TagbarToggle<CR>
@@ -362,13 +367,20 @@ nnoremap <leader>.z :BTags<CR>
 nnoremap <leader>z :Tags<CR>
 nnoremap <leader>.q :BLines<CR>
 nnoremap <leader>q :Rg<CR>
-" nnoremap <leader>gst :GFiles?<CR>
+"Quick Replace File"
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+"CtrlSF
+nmap <leader>g <Plug>CtrlSFPrompt
+nnoremap <leader>r :CtrlSFOpen<CR>
+" 
 nnoremap <leader>gst :Neotree git_status<CR>
 " Go To Definition using tags
 nmap <leader>gd <C-]>
 nnoremap <leader>lt :FloatermNew<CR>
 nnoremap <leader>lz :FloatermNew --height=0.9 --width=0.9 lazygit<CR>
 nnoremap <leader>lpy :FloatermNew --height=0.9 --width=0.9 python<CR>
+let g:floaterm_width         = 1.0
+let g:floaterm_position      = 'bottom'
 let g:floaterm_keymap_prev   = '<F8>'
 let g:floaterm_keymap_next   = '<F9>'
 let g:floaterm_keymap_toggle = '<F12>'
@@ -389,6 +401,7 @@ let g:jedi#goto_command = '<leader>gx'
 let g:jedi#usages_command = '<leader>go'
 " Find assignments
 let g:jedi#goto_assignments_command = '<leader>ga'
+let g:jedi#goto_stubs_command = '<leader>\'
 " Go to definition in new tab
 nmap ,D :tab split<CR>:call jedi#goto()<CR>
 " disable autoindent when pasting text

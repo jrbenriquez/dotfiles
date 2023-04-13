@@ -200,3 +200,7 @@ eval "$(pyenv init -)"
 # export PATH="/opt/homebrew/bin:$PATH"
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 export PATH="/Users/jr/.local/bin:$PATH"
+alias prun="poetry run"
+alias pinit="poetry init"
+alias padd="poetry add"
+alias pupd="poetry add"
