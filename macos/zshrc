@@ -159,3 +159,4 @@ alias vim="nvim"
 
 source $HOME/.config/fzf-git.sh/fzf-git.sh
 alias poetryshell="source \"\$(poetry env list --full-path | grep Activated | cut -d' ' -f1 )/bin/activate\""
+. "$HOME/.cargo/env"
