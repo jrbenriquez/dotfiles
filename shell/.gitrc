@@ -117,7 +117,6 @@ join-lines() {
   done
 } f g t r h s
 
-
 gsc () {
     git log \
     --reverse \
@@ -135,7 +134,6 @@ gsc () {
     xargs -I % sh -c 'git show --color=always % |
     diff-so-fancy'" \
     --header "enter: view, C-c: copy hash" \
-    --bind "enter:execute:$_viewGitLogLine | less -R" \
-    --bind "ctrl-c:execute:$_gitLogLineToHash | \
-    xclip -r -selection clipboard"
+    --bind "enter:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always % | diff-so-fancy | exec less --tabs=4 -RF'" \
+    --bind "ctrl-c:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'echo % | pbcopy; exec true'"
 }
