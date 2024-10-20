@@ -25,6 +25,7 @@ alias gstp='git stash pop'
 alias ga='git add'
 alias gft='git fetch'
 alias grbs='git rebase'
+alias gpffonly='git pull --ff-only'
 alias grbsomas='git fetch && git rebase origin/master'
 alias grbsomain='git rebase origin/main'
 alias gamend='git commit --amend'
@@ -115,3 +116,26 @@ join-lines() {
     eval "bindkey '^g^$c' fzf-g$c-widget"
   done
 } f g t r h s
+
+
+gsc () {
+    git log \
+    --reverse \
+    --color=always \
+    --format="%C(cyan)%h %C(blue)%ar%C(auto)%d \
+    %C(yellow)%s%b %C(green)%ae" "$@" | 
+    fzf -i -e +s \
+    --reverse \
+    --tiebreak=index \
+    --no-multi \
+    --ansi \
+    --preview="echo {} |
+    grep -o '[a-f0-9]\{7\}' |
+    head -1 |
+    xargs -I % sh -c 'git show --color=always % |
+    diff-so-fancy'" \
+    --header "enter: view, C-c: copy hash" \
+    --bind "enter:execute:$_viewGitLogLine | less -R" \
+    --bind "ctrl-c:execute:$_gitLogLineToHash | \
+    xclip -r -selection clipboard"
+}
