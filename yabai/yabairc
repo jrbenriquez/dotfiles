@@ -28,7 +28,8 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
 yabai -m rule --add app="^Macs Fan Control" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
-# yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Inkscape$" manage=off
+yabai -m rule --add app="^DevTools*" manage=off
 
 
