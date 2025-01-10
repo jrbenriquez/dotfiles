@@ -1,0 +1,17 @@
+[font]
+size = 18.0
+
+[font.normal]
+family = "Hack Nerd Font"
+
+[window]
+startup_mode = "Windowed"
+dynamic_padding = true
+opacity = 0.8
+option_as_alt = "Both"
+[keyboard]
+bindings = [
+  { key = "Space", mods = "Control", mode = "~Search", action = "ToggleViMode" }
+]
+
+
