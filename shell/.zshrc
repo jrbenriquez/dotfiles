@@ -9,9 +9,8 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jr/.oh-my-zsh"
-# Use Vim like interface in bash
-# set -o vi
+export ZSH="$HOME/.oh-my-zsh"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -31,14 +30,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -53,8 +51,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -107,21 +106,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-eval "$(pyenv init -)"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 export DOTFILES_DIR=~/Code/dotfiles
-alias vi=/usr/local/bin/nvim
-alias vim=/usr/local/bin/nvim
 alias tmux=tmux -u
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
-#export LC_ALL=en_US.UTF-8
 export LC_ALL=C
 export LANG=en_US.UTF-8
-
 
 # File Navigation
 source $DOTFILES_DIR/shell/.navfilerc
@@ -130,7 +119,9 @@ source $DOTFILES_DIR/shell/.navfilerc
 source $DOTFILES_DIR/shell/.tmuxrc
 
 # Zsh related bindings
-source $DOTFILES_DIR/shell/._zshrc
+# source $DOTFILES_DIR/shell/._zshrc
+# fzf related bindings
+ source $DOTFILES_DIR/shell/.fzfrc
 
 # Pip env related bindings
 source $DOTFILES_DIR/shell/.pipenvrc
@@ -146,61 +137,33 @@ source $DOTFILES_DIR/shell/.ctagsrc
 # pyenv bindings
 source $DOTFILES_DIR/shell/.pyenvrc
 
-# vim install python dependencies
-alias install-vdp='pip install -r $DOTFILES_DIR/vim-python-dependencies.txt'
-
 # django key bindings script
 source $DOTFILES_DIR/shell/.djangorc
 
-# vimwiki bindings script
-source $DOTFILES_DIR/shell/.vimwikirc
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# docker configs
-source $DOTFILES_DIR/shell/.dockerrc
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="$PATH:/Users/user/Code/flutter/bin"
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-
-
-# Virtualenvwrapper.sh
-
-#export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-
-#export WORKON_HOME=$HOME/.virtualenvs
-# source /Users/user/.pyenv/shims/virtualenvwrapper.sh
-# Other custom local machine configs
-PATH=$PATH:/usr/local/bin
-PATH=/usr/local/mysql/bin:$PATH
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/shims:$PATH"
-export PATH="$PYENV_ROOT/bin:$PATH"
-#export PATH="/Users/jr/.local/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-#fzf
 export FZF_DEFAULT_COMMAND="fd ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME/Code/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-  autoload -Uz compinit
-  compinit
-fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-# export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-# export PATH="/opt/homebrew/bin:$PATH"
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-export PATH="/Users/jr/.local/bin:$PATH"
-alias prun="poetry run"
-alias pinit="poetry init"
-alias padd="poetry add"
-alias pupd="poetry add"
+eval "$(pyenv virtualenv-init -)"
+
+alias vim="nvim"
+
+source $HOME/.config/fzf-git.sh/fzf-git.sh
+alias poetryshell="source \"\$(poetry env list --full-path | grep Activated | cut -d' ' -f1 )/bin/activate\""
+# . "$HOME/.cargo/env"
+
+# eval "$(_DSLR_COMPLETE=zsh_source dslr)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
