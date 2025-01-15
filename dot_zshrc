@@ -138,6 +138,9 @@ source $DOTFILES_DIR/shell/.pyenvrc
 # django key bindings script
 source $DOTFILES_DIR/shell/.djangorc
 
+# fzf
+source $DOTFILES_DIR/shell/.fzfrc
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
