@@ -106,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export DOTFILES_DIR=~/Code/dotfiles
+export DOTFILES_DIR=/Users/$(whoami)/.local/share/chezmoi
 alias tmux=tmux -u
 
 export LC_ALL=C
