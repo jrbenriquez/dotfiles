@@ -10,11 +10,7 @@ else
 fi
 
 # Utilities
-brew install fzf
-brew install bat
-brew install fd
-brew install ripgrep
-brew install xz
+install/utilities.sh
 
 #install nvim
 install/nvim.sh
